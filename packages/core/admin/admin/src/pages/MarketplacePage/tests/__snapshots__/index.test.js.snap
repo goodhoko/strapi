@@ -1251,7 +1251,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                   >
                     <label
                       class="c8 c30 c31"
-                      for="0"
+                      for=":r1:"
                     >
                       Search
                     </label>
@@ -1287,7 +1287,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                       aria-invalid="false"
                       aria-required="false"
                       class="c37"
-                      id="0"
+                      id=":r1:"
                       name="searchbar"
                       placeholder="Search"
                       value=""
@@ -1667,7 +1667,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                               Config Sync
                               <span>
                                 <div
-                                  aria-describedby="1"
+                                  aria-describedby=":r4:"
                                   class="c7"
                                   tabindex="0"
                                 >
@@ -1737,7 +1737,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                         </a>
                         <span>
                           <div
-                            aria-describedby="2"
+                            aria-describedby=":r6:"
                             class=""
                             tabindex="0"
                           >
@@ -1890,7 +1890,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                         </a>
                         <span>
                           <div
-                            aria-describedby="3"
+                            aria-describedby=":r8:"
                             class=""
                             tabindex="0"
                           >
@@ -2037,7 +2037,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                               Documentation
                               <span>
                                 <div
-                                  aria-describedby="4"
+                                  aria-describedby=":ra:"
                                   class="c7"
                                   tabindex="0"
                                 >
@@ -2232,7 +2232,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                         </a>
                         <span>
                           <div
-                            aria-describedby="5"
+                            aria-describedby=":rc:"
                             class=""
                             tabindex="0"
                           >
@@ -2301,10 +2301,10 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                       aria-expanded="false"
                       aria-haspopup="listbox"
                       aria-label="Entries per page"
-                      aria-labelledby="7 7-label 7-content"
+                      aria-labelledby=":re: :re:-label :re:-content"
                       aria-required="false"
                       class="c42"
-                      id="7"
+                      id=":re:"
                       role="combobox"
                       type="button"
                       value="24"
@@ -2320,7 +2320,7 @@ exports[`Marketplace page - layout renders the online layout 1`] = `
                         >
                           <span
                             class="c8 c45"
-                            id="7-content"
+                            id=":re:-content"
                           >
                             24
                           </span>

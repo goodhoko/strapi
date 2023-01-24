@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { QueryClientProvider, QueryClient } from 'react-query';
@@ -156,9 +156,7 @@ describe('Admin | Settings | Review Workflow | ReviewWorkflowsPage', () => {
       target: { value: 'stage-2' },
     });
 
-    await act(async () => {
-      await user.click(getByRole('button', { name: /save/i }));
-    });
+    fireEvent.click(getByRole('button', { name: /save/i }));
 
     expect(toggleNotification).toBeCalledWith({
       type: 'success',
@@ -181,9 +179,7 @@ describe('Admin | Settings | Review Workflow | ReviewWorkflowsPage', () => {
       target: { value: 'stage-2' },
     });
 
-    await act(async () => {
-      await user.click(getByRole('button', { name: /save/i }));
-    });
+    fireEvent.click(getByRole('button', { name: /save/i }));
 
     expect(toggleNotification).toBeCalledWith({
       type: 'warning',
@@ -212,9 +208,7 @@ describe('Admin | Settings | Review Workflow | ReviewWorkflowsPage', () => {
 
     await user.click(deleteButtons[0]);
 
-    await act(async () => {
-      await user.click(getByRole('button', { name: /save/i }));
-    });
+    fireEvent.click(getByRole('button', { name: /save/i }));
 
     expect(getByRole('heading', { name: /confirmation/i })).toBeInTheDocument();
   });

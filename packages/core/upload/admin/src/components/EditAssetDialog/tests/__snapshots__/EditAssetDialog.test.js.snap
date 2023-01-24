@@ -802,7 +802,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                           <span>
                             <button
                               aria-disabled="false"
-                              aria-labelledby="0"
+                              aria-labelledby=":r0:"
                               class="c13 c4 c14 c15"
                               tabindex="0"
                               type="button"
@@ -831,7 +831,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                           <span>
                             <button
                               aria-disabled="false"
-                              aria-labelledby="1"
+                              aria-labelledby=":r2:"
                               class="c13 c4 c14 c15"
                               tabindex="0"
                               type="button"
@@ -862,7 +862,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                           <span>
                             <button
                               aria-disabled="false"
-                              aria-labelledby="2"
+                              aria-labelledby=":r4:"
                               class="c13 c4 c14 c15"
                               tabindex="0"
                               type="button"
@@ -895,7 +895,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                           <span>
                             <button
                               aria-disabled="false"
-                              aria-labelledby="3"
+                              aria-labelledby=":r6:"
                               class="c13 c4 c14 c15"
                               tabindex="0"
                               type="button"
@@ -1077,7 +1077,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                             >
                               <label
                                 class="c11 c33 c34"
-                                for="5"
+                                for=":r8:"
                               >
                                 File name
                               </label>
@@ -1089,7 +1089,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                                   aria-invalid="false"
                                   aria-required="false"
                                   class="c36"
-                                  id="5"
+                                  id=":r8:"
                                   name="name"
                                   value="Screenshot 2.png"
                                 />
@@ -1106,7 +1106,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                             >
                               <label
                                 class="c11 c33 c34"
-                                for="7"
+                                for=":ra:"
                               >
                                 Alternative text
                               </label>
@@ -1114,19 +1114,19 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                                 class="c10 c35"
                               >
                                 <input
-                                  aria-describedby="7-hint"
+                                  aria-describedby=":ra:-hint"
                                   aria-disabled="false"
                                   aria-invalid="false"
                                   aria-required="false"
                                   class="c36"
-                                  id="7"
+                                  id=":ra:"
                                   name="alternativeText"
                                   value=""
                                 />
                               </div>
                               <p
                                 class="c11 c37"
-                                id="7-hint"
+                                id=":ra:-hint"
                               >
                                 This text will be displayed if the asset can’t be shown.
                               </p>
@@ -1142,7 +1142,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                             >
                               <label
                                 class="c11 c33 c34"
-                                for="9"
+                                for=":rc:"
                               >
                                 Caption
                               </label>
@@ -1154,7 +1154,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
                                   aria-invalid="false"
                                   aria-required="false"
                                   class="c36"
-                                  id="9"
+                                  id=":rc:"
                                   name="caption"
                                   value=""
                                 />
@@ -1326,7 +1326,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
   >
     <div
       class="c50 c51"
-      id="0"
+      id=":r0:"
       role="tooltip"
     >
       <p
@@ -1341,7 +1341,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
   >
     <div
       class="c50 c51"
-      id="1"
+      id=":r2:"
       role="tooltip"
     >
       <p
@@ -1356,7 +1356,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
   >
     <div
       class="c50 c51"
-      id="2"
+      id=":r4:"
       role="tooltip"
     >
       <p
@@ -1371,7 +1371,7 @@ exports[`<EditAssetDialog /> renders and matches the snapshot 1`] = `
   >
     <div
       class="c50 c51"
-      id="3"
+      id=":r6:"
       role="tooltip"
     >
       <p
