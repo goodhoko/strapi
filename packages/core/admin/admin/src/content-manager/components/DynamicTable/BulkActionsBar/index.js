@@ -190,12 +190,14 @@ const BulkActionsBar = ({
   const [isConfirmButtonLoading, setIsConfirmButtonLoading] = useState(false);
   const [dialogToOpen, setDialogToOpen] = useState(null);
 
+  // Filters for Bulk actions
   const selectedEntriesObjects = data.filter((entry) => selectedEntries.includes(entry.id));
   const publishButtonIsShown =
     showPublish && selectedEntriesObjects.some((entry) => !entry.publishedAt);
   const unpublishButtonIsShown =
     showPublish && selectedEntriesObjects.some((entry) => entry.publishedAt);
 
+  // Bulk delete
   const handleToggleShowDeleteAllModal = () => {
     if (dialogToOpen === 'delete') {
       setDialogToOpen(null);
