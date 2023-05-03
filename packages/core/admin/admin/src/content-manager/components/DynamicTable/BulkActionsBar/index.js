@@ -183,10 +183,17 @@ const BulkActionsBar = ({
 }) => {
   const { formatMessage } = useIntl();
   const { trackUsage } = useTracking();
+  const { data } = useSelector(listViewDomain());
+
   const [isConfirmButtonLoading, setIsConfirmButtonLoading] = useState(false);
   const [dialogToOpen, setDialogToOpen] = useState(null);
 
-  // Bulk delete
+  const selectedEntriesObjects = data.filter((entry) => selectedEntries.includes(entry.id));
+  const showPublishButton =
+    showPublish && selectedEntriesObjects.some((entry) => !entry.publishedAt);
+  const showUnpublishButton =
+    showPublish && selectedEntriesObjects.some((entry) => entry.publishedAt);
+
   const handleToggleShowDeleteAllModal = () => {
     if (dialogToOpen === 'delete') {
       setDialogToOpen(null);
@@ -254,13 +261,10 @@ const BulkActionsBar = ({
 
   return (
     <>
-      {showPublish && (
+      {showPublishButton && (
         <>
           <Button variant="tertiary" onClick={handleToggleShowPublishAllModal}>
             {formatMessage({ id: 'app.utils.publish', defaultMessage: 'Publish' })}
-          </Button>
-          <Button variant="tertiary" onClick={handleToggleShowUnpublishAllModal}>
-            {formatMessage({ id: 'app.utils.unpublish', defaultMessage: 'Unpublish' })}
           </Button>
           <ConfirmDialogPublishAll
             isOpen={dialogToOpen === 'publish'}
@@ -268,6 +272,13 @@ const BulkActionsBar = ({
             isConfirmButtonLoading={isConfirmButtonLoading}
             onConfirm={handleConfirmPublishAll}
           />
+        </>
+      )}
+      {showUnpublishButton && (
+        <>
+          <Button variant="tertiary" onClick={handleToggleShowUnpublishAllModal}>
+            {formatMessage({ id: 'app.utils.unpublish', defaultMessage: 'Unpublish' })}
+          </Button>
           <ConfirmDialogUnpublishAll
             isOpen={dialogToOpen === 'unpublish'}
             onToggleDialog={handleToggleShowUnpublishAllModal}
