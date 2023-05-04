@@ -44,10 +44,15 @@ describe('BulkActionsBar', () => {
 
   const setup = (props) => render(<TestComponent {...props} />);
 
-  it('should render publish buttons if showPublish is true', () => {
-    setup({ showPublish: true });
+  it('should render publish button if showPublish is true and all selected entries are in draft', () => {
+    setup({ showPublish: true, selectedEntries: [1] });
 
     expect(screen.getByRole('button', { name: /\bPublish\b/ })).toBeInTheDocument();
+  });
+
+  it('should render unpublish button if showPublish is true and all selected entries are published', () => {
+    setup({ showPublish: true, selectedEntries: [2] });
+
     expect(screen.getByRole('button', { name: /\bUnpublish\b/ })).toBeInTheDocument();
   });
 
@@ -94,13 +99,13 @@ describe('BulkActionsBar', () => {
     expect(mockConfirmDeleteAll).toHaveBeenCalledWith([1, 2]);
   });
 
-  it('should not show publish button if selected entries are all published', () => {
+  it('should not show publish button if at least one selected entry is already published', () => {
     setup({ showPublish: true, selectedEntries: [2] });
 
     expect(screen.queryByRole('button', { name: /\bPublish\b/ })).not.toBeInTheDocument();
   });
 
-  it('should not show unpublish button if selected entries are all unpublished', () => {
+  it('should not show unpublish button if at least one selected entry is still in draft', () => {
     setup({ showPublish: true, selectedEntries: [1] });
 
     expect(screen.queryByRole('button', { name: /\bUnpublish\b/ })).not.toBeInTheDocument();
@@ -108,7 +113,7 @@ describe('BulkActionsBar', () => {
 
   it('should show publish modal if publish button is clicked', async () => {
     const onConfirmPublishAll = jest.fn();
-    setup({ showPublish: true, onConfirmPublishAll });
+    setup({ showPublish: true, onConfirmPublishAll, selectedEntries: [1] });
 
     await act(async () => {
       await user.click(screen.getByRole('button', { name: /\bpublish\b/i }));
@@ -117,12 +122,12 @@ describe('BulkActionsBar', () => {
       );
     });
 
-    expect(onConfirmPublishAll).toHaveBeenCalledWith([1, 2]);
+    expect(onConfirmPublishAll).toHaveBeenCalledWith([1]);
   });
 
   it('should show unpublish modal if unpublish button is clicked', async () => {
     const onConfirmUnpublishAll = jest.fn();
-    setup({ showPublish: true, onConfirmUnpublishAll });
+    setup({ showPublish: true, onConfirmUnpublishAll, selectedEntries: [2] });
 
     await act(async () => {
       await user.click(screen.getByRole('button', { name: /\bunpublish\b/i }));
@@ -131,6 +136,6 @@ describe('BulkActionsBar', () => {
       );
     });
 
-    expect(onConfirmUnpublishAll).toHaveBeenCalledWith([1, 2]);
+    expect(onConfirmUnpublishAll).toHaveBeenCalledWith([2]);
   });
 });

@@ -193,9 +193,9 @@ const BulkActionsBar = ({
   // Filters for Bulk actions
   const selectedEntriesObjects = data.filter((entry) => selectedEntries.includes(entry.id));
   const publishButtonIsShown =
-    showPublish && selectedEntriesObjects.some((entry) => !entry.publishedAt);
+    showPublish && selectedEntriesObjects.every((entry) => !entry.publishedAt);
   const unpublishButtonIsShown =
-    showPublish && selectedEntriesObjects.some((entry) => entry.publishedAt);
+    showPublish && selectedEntriesObjects.every((entry) => entry.publishedAt);
 
   // Bulk delete
   const handleToggleShowDeleteAllModal = () => {
