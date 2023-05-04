@@ -8,23 +8,21 @@ import {
   AccordionToggle,
   AccordionContent,
   Box,
-  Field,
-  FieldLabel,
-  FieldError,
   Flex,
   Grid,
   GridItem,
   IconButton,
   TextInput,
   VisuallyHidden,
+  Combobox,
+  ComboboxOption,
+  Typography,
 } from '@strapi/design-system';
-import { ReactSelect, useTracking } from '@strapi/helper-plugin';
+import { useTracking } from '@strapi/helper-plugin';
 import { Drag, Trash } from '@strapi/icons';
 
 import { deleteStage, updateStagePosition, updateStage } from '../../../actions';
 import { getAvailableStageColors } from '../../../utils/colors';
-import { OptionColor } from './components/OptionColor';
-import { SingleValueColor } from './components/SingleValueColor';
 import { useDragAndDrop } from '../../../../../../../../../admin/src/content-manager/hooks';
 import { composeRefs } from '../../../../../../../../../admin/src/content-manager/utils';
 import { DRAG_DROP_TYPES } from '../../../constants';
@@ -172,9 +170,6 @@ export function Stage({
     ),
     color: hex,
   }));
-  // TODO: the .toUpperCase() conversion can be removed once the hex code is normalized in
-  // the admin API
-  const colorValue = colorOptions.find(({ value }) => value === colorField.value.toUpperCase());
 
   return (
     <Box ref={composedRef}>
@@ -254,48 +249,49 @@ export function Stage({
               </GridItem>
 
               <GridItem col={6}>
-                <Field
+                <Combobox
                   error={colorMeta?.error ?? false}
-                  name={colorField.name}
                   id={colorField.name}
                   required
-                >
-                  <Flex direction="column" gap={1} alignItems="stretch">
-                    <FieldLabel>
-                      {formatMessage({
-                        id: 'content-manager.reviewWorkflows.stage.color',
-                        defaultMessage: 'Color',
-                      })}
-                    </FieldLabel>
-
-                    <ReactSelect
-                      components={{ Option: OptionColor, SingleValue: SingleValueColor }}
-                      error={colorMeta?.error}
-                      inputId={colorField.name}
-                      name={colorField.name}
-                      options={colorOptions}
-                      onChange={({ value }) => {
-                        colorField.onChange({ target: { value } });
-                        dispatch(updateStage(id, { color: value }));
-                      }}
-                      // If no color was found in all the valid theme colors it means a user
-                      // has set a custom value e.g. through the content API. In that case we
-                      // display the custom color and a "Custom" label.
-                      value={
-                        colorValue ?? {
-                          value: colorField.value,
-                          label: formatMessage({
-                            id: 'Settings.review-workflows.stage.color.name.custom',
-                            defaultMessage: 'Custom',
-                          }),
-                          color: colorField.value,
-                        }
-                      }
+                  label={formatMessage({
+                    id: 'content-manager.reviewWorkflows.stage.color',
+                    defaultMessage: 'Color',
+                  })}
+                  startIcon={
+                    <Flex
+                      as="span"
+                      height={2}
+                      background={colorField.value}
+                      hasRadius
+                      shrink={0}
+                      width={2}
+                      marginRight="-3px"
                     />
-
-                    <FieldError />
-                  </Flex>
-                </Field>
+                  }
+                  onChange={(value) => {
+                    colorField.onChange({ target: { value } });
+                    dispatch(updateStage(id, { color: value }));
+                  }}
+                  value={colorField.value}
+                >
+                  {colorOptions.map(({ value, label, color }) => (
+                    <ComboboxOption value={value} textValue={label}>
+                      <Flex as="span" alignItems="center" gap={2}>
+                        <Flex
+                          as="span"
+                          height={2}
+                          background={color}
+                          hasRadius
+                          shrink={0}
+                          width={2}
+                        />
+                        <Typography textColor="neutral800" ellipsis>
+                          {label}
+                        </Typography>
+                      </Flex>
+                    </ComboboxOption>
+                  ))}
+                </Combobox>
               </GridItem>
             </Grid>
           </AccordionContent>
